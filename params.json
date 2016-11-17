@@ -1,0 +1,6 @@
+{
+  "name": "Ysph-thesis",
+  "tagline": "MPH Thesis comparing deterministic and stochastic modeling methods when applied to school closings to prevent influenza transmission",
+  "body": "### Abstract\r\nSpecific Aims: Designing a model that informs policy makers when to close schools in order to prevent further flu transmission.\r\n\r\nHypotheses: Demonstrating that stochastic models are better are a better fit to predict possible flu epidemics in elementary schools than deterministic models.\r\n\r\n### Background\r\nParameters:\r\nR0 = {1.2,1.6,2.0}\r\nGamma = {2,5,8} days\r\nDeterministic Method equations:\r\n\\frac{dS}{dt} = -\\beta\\frac{SI}{N} - \\nu S\r\n\\frac{dI}{dt} = +\\beta\\frac{SI}{N} - \\gamma I\r\n\\frac{dS}{dt} = +\\gamma I\r\n\\frac{dV}{dt} = +\\nu S\r\nStochastic Method: Gillespie Algorithm\r\n\r\n### Methods\r\nStochastic vs Deterministic\r\nList figures here:\r\n\r\n### Results\r\nPut figures here\r\n\r\n### Discussion\r\nFiller\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
