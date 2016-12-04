@@ -7,7 +7,8 @@ schoolclosure <- function(beta,gamma,S0,I0,R0,tau0,maxtime,nsims,closeeff,closur
   sims = list()
   infected <- list()
   nrec <- matrix(data=NA, nrow=nsims, ncol=maxtime)
-  maxtau <- matrix(data=NA, nrow=nsims, ncol=maxtime)
+  maxrec <- array(data=NA, dim=nsims)
+  #maxtau <- matrix(data=NA, nrow=nsims, ncol=maxtime)
   #Run gillespie simulation with above parameters
   
   for (j in 1:nsims) {
@@ -63,18 +64,22 @@ schoolclosure <- function(beta,gamma,S0,I0,R0,tau0,maxtime,nsims,closeeff,closur
   for (i in 1:nsims) {
     nrec[i,] = sims[[i]][,3] 
   }
-  
-  for (i in 1:nsims) {
-    maxtau[i,] = max(sims[[i]][,4],na.rm=TRUE)
-  }
-  
-  maxt = max(maxtau)
-  
-  plot(1,type="n",xlab="Time",ylab="Total infected",
-       main=NULL,xlim=c(0, 500), 
-       ylim=c(0, 1000))
-  
-  for (i in 1:nsims) {
-    lines(sims[[i]][,4], sims[[i]][,3], col=i)
-  }
+  maxrec <- apply(nrec,1,max,na.rm=TRUE)
+  list <- rep(closurethresh,length(maxrec))
+  result <- cbind(list,maxrec)
+  return(result)
 }
+
+  #for (i in 1:nsims) {
+  #  maxtau[i,] = max(sims[[i]][,4],na.rm=TRUE)
+  #}
+  
+  #maxt = max(maxtau)
+  
+  #plot(1,type="n",xlab="Time",ylab="Total infected",
+  #     main=NULL,xlim=c(0, 500), 
+  #     ylim=c(0, 1000))
+  
+  #for (i in 1:nsims) {
+  #  lines(sims[[i]][,4], sims[[i]][,3], col=i)
+  #}
