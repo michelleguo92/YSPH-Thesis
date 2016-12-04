@@ -9,9 +9,14 @@ maxtime = 30000
 nsims = 1000
 closeeff = 0.8
 closureduration = 7
+kappa = 0
 #1.1###########################################################
 beta  = 0.6
 gamma = 1/2 
+parms  = c(gamma=gamma,beta=beta,kappa=kappa)
+inits = c(S=S0,I=I0,R=R0)
+closedur = 70
+closure = as.data.frame(lsoda(inits, vt, SIRclosefunc, parms))
 t1 = schoolclosure(beta,gamma,S0,I0,R0,tau0,maxtime,nsims,
                    closeeff,closurethresh=0,closureduration)
 plot(t1,xlim=c(0,80),ylim=c(0,1000),xlab='',ylab='',col="red")
